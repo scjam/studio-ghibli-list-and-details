@@ -4,6 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import MovieById from '../../containers/MovieById';
 import MoviesPage from '../../containers/MoviesPage';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={MoviesPage} />
+        <Route path="/movies/:id" component={MovieById} />
       </Switch>
     </Router>
   );

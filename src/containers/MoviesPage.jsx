@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
+import Loading from '../components/loading/Loading';
 import MovieList from '../components/movies/MovieList';
 import { findMovies } from '../services/studioGhibli';
 
@@ -19,7 +20,8 @@ export default class MoviesPage extends Component {
   render() {
     const { loading, movies } = this.state;
     
-    if(loading) return <img src="https://media.giphy.com/media/omHPYZttAVAAw/giphy.gif" alt="loading" />;
+    if(loading) return <Loading />;
+    
     return (
       <MovieList movies={movies} />
     );
