@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const MovieDetail = ({ title, description, director, release_date }) => (
   <div>
-    <img src="https://i.ebayimg.com/images/g/dCoAAOSwUq9bQP~h/s-l300.jpg" alt="Susuwatari" />
+    <img src="https://i.ebayimg.com/images/g/dCoAAOSwUq9bQP~h/s-l300.jpg" 
+      alt="Susuwatari" />
     <h3>{title}</h3>
     <p>{description}</p>
     <p>{director}</p>

@@ -1,8 +1,9 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import movieByIdResponse from '../fixtures/'
+import movieByIdResponse from '../fixtures/movies.json';
 import MovieById from './MovieById';
 
 
