@@ -1,29 +1,14 @@
-/* eslint-disable max-len */
-import React, { Component } from 'react';
+import React from 'react';
 import Loading from '../components/loading/Loading';
 import MovieList from '../components/movies/MovieList';
-import { findMovies } from '../services/studioGhibli';
+import { useMovies } from '../hooks/movies';
 
-export default class MoviesPage extends Component {
-  state = {
-    loading: true,
-    movies: []
-  }
+const MoviesPage = () => {
+  const { loading, movies } = useMovies();
 
-  componentDidMount() {
-    findMovies()
-      .then(movies => {
-        this.setState({ movies, loading: false });
-      });
-  }
-  
-  render() {
-    const { loading, movies } = this.state;
-    
-    if(loading) return <Loading />;
-    
-    return (
-      <MovieList movies={movies} />
-    );
-  }
-}
+  if(loading) return <Loading />;
+
+  return <MovieList movies={movies} />;
+};
+
+export default MoviesPage;
