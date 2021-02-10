@@ -1,36 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../components/loading/Loading';
 import MovieDetail from '../components/detail/MovieDetail';
 import { findMovieById } from '../services/studioGhibli';
 
-export default class MovieById extends Component {
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
-  }
 
-  state = {
-    loading: true,
-    movie: null
-  }
+const MovieById = ({ match }) => {
+  const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState(null);
 
-  componentDidMount() {
-    findMovieById(this.props.match.params.id)
+  useEffect(() => {
+    findMovieById(match.params.id)
       .then(movie => {
-        this.setState({ movie, loading: false });
+        setMovie(movie);
+        setLoading(false);
       });
-  }
+  }, []);
 
-  render() {
-    const { loading, movie } = this.state;
+  if(loading) return <Loading />;
+  return (
+    <MovieDetail {...movie} />);
+};
 
-    if(loading) return <Loading />;
-    return (
-      <MovieDetail {...movie} />
-    );
-  }
-}
+MovieById.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default MovieById;
