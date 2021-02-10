@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Movie from './Movie';
+import { Link } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
   const movieElements = movies.map(movie => (
     <li key={movie.id}>
-      <Movie description={movie.description} title={movie.title} />
+      <Link to={`/movies/${movie.id}`}>
+        <Movie description={movie.description} title={movie.title} />
+      </Link>
     </li>
   ));
 
