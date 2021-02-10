@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import movieByIdResponse from '../fixtures/movies.json';
+import movieByIdResponse from '../fixtures/characterById.json';
 import MovieById from './MovieById';
 
 
