@@ -16,7 +16,7 @@ MovieDetail.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired
+  release_date: PropTypes.string
 };
 
 export default MovieDetail;
