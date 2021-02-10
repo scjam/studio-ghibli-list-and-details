@@ -1,17 +1,25 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
+import MovieList from '../components/movies/MovieList';
 
 export default class MoviesPage extends Component {
   state = {
-    loading: true
+    loading: true,
+    movies: []
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 500);
   }
   
   render() {
-    const { loading } = this.state;
+    const { loading, movies } = this.state;
     
     if(loading) return <img src="https://media.giphy.com/media/omHPYZttAVAAw/giphy.gif" alt="loading" />;
     return (
-      <h1>Movies Page</h1>
+      <MovieList movies={movies} />
     );
   }
 }
