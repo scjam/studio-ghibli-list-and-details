@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import MovieList from '../components/movies/MovieList';
+import { findMovies } from '../services/studioGhibli';
 
 export default class MoviesPage extends Component {
   state = {
@@ -9,9 +10,10 @@ export default class MoviesPage extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 500);
+    findMovies()
+      .then(movies => {
+        this.setState({ movies, loading: false });
+      });
   }
   
   render() {
