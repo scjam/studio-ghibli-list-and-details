@@ -1,20 +1,10 @@
-/* eslint-disable max-len */
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import Loading from '../components/loading/Loading';
 import MovieList from '../components/movies/MovieList';
-import { findMovies } from '../services/studioGhibli';
+import { useMovies } from '../hooks/movies';
 
 const MoviesPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    findMovies()
-      .then(movies => {
-        setMovies(movies);
-        setLoading(false);
-      });
-  }, []);
+  const { loading, movies } = useMovies();
 
   if(loading) return <Loading />;
 

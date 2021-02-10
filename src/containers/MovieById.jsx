@@ -1,25 +1,14 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../components/loading/Loading';
 import MovieDetail from '../components/detail/MovieDetail';
-import { findMovieById } from '../services/studioGhibli';
-
+import { useMovieById } from '../hooks/movies';
 
 const MovieById = ({ match }) => {
-  const [loading, setLoading] = useState(true);
-  const [movie, setMovie] = useState(null);
-
-  useEffect(() => {
-    findMovieById(match.params.id)
-      .then(movie => {
-        setMovie(movie);
-        setLoading(false);
-      });
-  }, []);
+  const { loading, movie } = useMovieById(match.params.id);
 
   if(loading) return <Loading />;
-  return (
-    <MovieDetail {...movie} />);
+  return <MovieDetail {...movie} />;
 };
 
 MovieById.propTypes = {
